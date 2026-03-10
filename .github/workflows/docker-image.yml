@@ -15,4 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag tiisto/send:tagname
+      run: docker build . --file Dockerfile --tag tiisto/send:latest
+    - name: Push Docker Image
+      run : docker push tiisto/send:latest
