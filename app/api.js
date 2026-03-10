@@ -236,11 +236,11 @@ async function upload(
       size += buf.length;
       state = await reader.read();
       while (
-        ws.bufferedAmount > ECE_RECORD_SIZE * 2 &&
+        ws.bufferedAmount > ECE_RECORD_SIZE * 16 * 8 &&
         ws.readyState === WebSocket.OPEN &&
         !canceller.cancelled
       ) {
-        await delay();
+        await delay(5);
       }
     }
     if (ws.readyState === WebSocket.OPEN) {
